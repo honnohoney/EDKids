@@ -184,15 +184,22 @@ const userSubmit = async () => {
   });
   // if logined success
   if (response && response.userData && response.userData.apiKey) {
-    authenStore.setUserAuthen(response.userData);
+    if (response.userData.std_id) {
+      authenStore.setUserAuthen(response.userData);
+      alertSuccess("เข้าสู่ระบบสำเร็จ", "ยินดีต้อนรับ");
+      setTimeout(() => {
+        window.location.replace("#/homePage");
+      }, 800);
+    } else if (response.status != true) {
+      alertDanger(
+        "เข้าสู่ระบบไม่สำเร็จ",
+        "กรุณาตรวจสอบชื่อผู้ใช้และรหัสผ่านให้ถูกต้อง"
+      );
+    }
     // $q.notify({
     //   message: "Login Success!!",
     //   // avatar: response.userData.picture.path,
     // });
-    alertSuccess("เข้าสู่ระบบสำเร็จ", "ยินดีต้อนรับ");
-    setTimeout(() => {
-      window.location.replace("#/homePage");
-    }, 500);
   } else if (response.status != true) {
     alertDanger(
       "เข้าสู่ระบบไม่สำเร็จ",
