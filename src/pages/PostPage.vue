@@ -32,13 +32,13 @@ import { ref, onMounted, onUnmounted, watch, defineAsyncComponent } from "vue";
 import { SocialApi } from "src/api/SocialApi";
 import { useRoute } from "vue-router";
 import { PostApi } from "src/api/PostApi";
-import { teacherKey } from "src/boot/utils/config";
+import { fetchTeacher } from "src/boot/utils/config";
 
 const route = { useRoute };
 const { getPost } = PostApi();
 const { getImagePost } = PostApi();
 
-const id = localStorage.getItem(teacherKey);
+const id = localStorage.getItem(fetchTeacher);
 const teacherId = ref(id);
 const entityItem = ref(false);
 const imageId = ref([]);

@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import { LocalStorage } from "quasar";
-import { authenKey, teacherKey, studentKey } from "src/boot/utils/config";
+import { authenKey, studentKey, fetchTeacher } from "src/boot/utils/config";
 
 export const useAuthenStore = defineStore("authenStore", {
   state: async () => ({
@@ -19,7 +19,7 @@ export const useAuthenStore = defineStore("authenStore", {
       if (userData && userData.apiKey) {
         LocalStorage.set(authenKey, userData.apiKey);
         LocalStorage.set(studentKey, userData.std_id);
-        LocalStorage.set(teacherKey, userData.teacher_id);
+        LocalStorage.set(fetchTeacher, userData.teacher_id);
       }
 
       this.auth = userData.teacher_id;
@@ -27,7 +27,6 @@ export const useAuthenStore = defineStore("authenStore", {
     },
     logout() {
       this.auth = undefined;
-      LocalStorage.remove(teacherKey);
       LocalStorage.remove(authenKey);
     },
   },

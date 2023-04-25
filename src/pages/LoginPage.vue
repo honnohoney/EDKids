@@ -200,12 +200,13 @@ const userSubmit = async () => {
     //   message: "Login Success!!",
     //   // avatar: response.userData.picture.path,
     // });
-  } else if (response.status != true) {
-    alertDanger(
-      "เข้าสู่ระบบไม่สำเร็จ",
-      "กรุณาตรวจสอบชื่อผู้ใช้และรหัสผ่านให้ถูกต้อง"
-    );
   }
+  // else if (response.status != true) {
+  //   alertDanger(
+  //     "เข้าสู่ระบบไม่สำเร็จ",
+  //     "กรุณาตรวจสอบชื่อผู้ใช้และรหัสผ่านให้ถูกต้อง"
+  //   );
+  // }
 };
 </script>
 

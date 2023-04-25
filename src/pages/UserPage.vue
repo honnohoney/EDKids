@@ -180,7 +180,7 @@ import { useRoute } from "vue-router";
 import { ParentsApi } from "src/api/ParentsApi";
 import { ConductApi } from "src/api/ConductApi";
 import { TeacherApi } from "src/api/TeacherApi";
-import { studentKey, teacherKey } from "src/boot/utils/config";
+import { studentKey, fetchTeacher } from "src/boot/utils/config";
 
 const route = useRoute();
 const birthYear = ref();
@@ -197,7 +197,7 @@ const { getConductAverage } = ConductApi();
 const { getOneTeacher } = TeacherApi();
 
 const id = localStorage.getItem(studentKey);
-const teacherId = localStorage.getItem(teacherKey);
+const teacherId = localStorage.getItem(fetchTeacher);
 const studentId = ref(id);
 const parentEntityItem = ref({});
 const entityItem = ref({});

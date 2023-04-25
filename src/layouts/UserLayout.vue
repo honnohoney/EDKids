@@ -79,7 +79,7 @@ import { useAuthenStore } from "src/stores/authen";
 // import { biGear, biPencil } from "@quasar/extras/bootstrap-icons";
 
 const route = useRoute();
-const leftDrawerOpen = ref(false);
+const leftDrawerOpen = ref(true);
 const id = localStorage.getItem(studentKey);
 const studentId = ref(id);
 const { getOne } = StudentApi();

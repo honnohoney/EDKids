@@ -64,10 +64,10 @@
 import { ref, onMounted } from "vue";
 import { TeacherApi } from "src/api/TeacherApi";
 import { useRoute } from "vue-router";
-import { teacherKey } from "src/boot/utils/config";
+import { fetchTeacher } from "src/boot/utils/config";
 
 const { getOneTeacher } = TeacherApi();
-const id = localStorage.getItem(teacherKey);
+const id = localStorage.getItem(fetchTeacher);
 const studentId = ref(id);
 const imageFile = ref();
 const route = useRoute();
