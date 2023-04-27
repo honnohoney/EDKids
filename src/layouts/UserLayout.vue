@@ -16,12 +16,34 @@
     <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
       <q-list>
         <div class="flex justify-center q-pt-md column items-center">
-          <q-img
-            :src="entityItem.image?.thumbnail"
-            width="150px"
-            height="150px"
-            style="border-radius: 50%"
-          />
+          <q-avatar style="width: 150px; height: 150px">
+            <q-img
+              :src="entityItem.image?.thumbnail"
+              width="150px"
+              height="150px"
+              style="cursor: pointer"
+              @click="icon = true"
+          /></q-avatar>
+
+          <q-dialog v-model="icon">
+            <q-card class="fit">
+              <q-card-section class="row items-center q-pb-none">
+                <h6>น้อง {{ entityItem.nick_name }}</h6>
+                <q-space />
+                <q-btn icon="close" flat round dense v-close-popup />
+              </q-card-section>
+
+              <q-card-section>
+                <q-img
+                  :src="entityItem.image?.thumbnail"
+                  width="100%"
+                  height="100%"
+                  style="cursor: pointer"
+                />
+              </q-card-section>
+            </q-card>
+          </q-dialog>
+
           <p class="text-h6 q-pt-md no-margin text-green-12">
             น้อง {{ entityItem.nick_name }}
           </p>
@@ -78,16 +100,17 @@ import { useAuthenStore } from "src/stores/authen";
 
 // import { biGear, biPencil } from "@quasar/extras/bootstrap-icons";
 
-const route = useRoute();
-const leftDrawerOpen = ref(true);
 const id = localStorage.getItem(studentKey);
+const leftDrawerOpen = ref(true);
 const studentId = ref(id);
-const { getOne } = StudentApi();
 const entityItem = ref({});
+const icon = ref(false);
 
-const { userLogout } = AuthenApi();
 const $q = useQuasar();
+const route = useRoute();
 const authenStore = useAuthenStore();
+const { getOne } = StudentApi();
+const { userLogout } = AuthenApi();
 
 onMounted(() => {
   if (route.params.studentId) {

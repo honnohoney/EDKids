@@ -67,6 +67,7 @@ import { ref, onMounted, onUnmounted, watch, defineAsyncComponent } from "vue";
 import { ConductApi } from "src/api/ConductApi";
 import { useRoute } from "vue-router";
 import { studentKey } from "src/boot/utils/config";
+import { useMeta } from "quasar";
 
 const { getConductList } = ConductApi();
 
@@ -75,6 +76,7 @@ const id = localStorage.getItem(studentKey);
 const studentId = ref(id);
 const entityItem = ref({});
 const loading = ref(false);
+useMeta({ title: "คะแนนความประพฤติ" });
 
 onMounted(() => {
   if (route.params.studentId) {

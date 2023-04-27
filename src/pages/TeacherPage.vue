@@ -65,6 +65,7 @@ import { ref, onMounted } from "vue";
 import { TeacherApi } from "src/api/TeacherApi";
 import { useRoute } from "vue-router";
 import { fetchTeacher } from "src/boot/utils/config";
+import { useMeta } from "quasar";
 
 const { getOneTeacher } = TeacherApi();
 const id = localStorage.getItem(fetchTeacher);
@@ -73,6 +74,8 @@ const imageFile = ref();
 const route = useRoute();
 const entityItem = ref({});
 const loading = ref(false);
+
+useMeta({ title: "ครูผู้สอน" });
 
 onMounted(() => {
   if (route.params.studentId) {

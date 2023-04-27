@@ -30,24 +30,24 @@
 <script setup>
 import { ref, onMounted, defineAsyncComponent } from "vue";
 import { PostApi } from "src/api/PostApi";
-<<<<<<< HEAD
 import { fetchTeacher } from "src/boot/utils/config";
+import { teacherKey } from "src/boot/utils/config";
+import { useRoute } from "vue-router";
+import { useMeta } from "quasar";
 
 const route = { useRoute };
 const { getPost } = PostApi();
 const { getImagePost } = PostApi();
 
 const id = localStorage.getItem(fetchTeacher);
-=======
-import { teacherKey } from "src/boot/utils/config";
-const { getPost } = PostApi();
-const id = localStorage.getItem(teacherKey);
->>>>>>> 6b1de327e8d83cbf4488af55b6863686942db094
 const teacherId = ref(id);
 const entityItem = ref(false);
 const imageId = ref([]);
 const imageEntity = ref([]);
 const loading = ref(false);
+
+useMeta({ title: "โพสต์" });
+
 onMounted(() => {
   fetchData();
 });

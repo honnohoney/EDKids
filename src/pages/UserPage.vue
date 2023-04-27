@@ -181,6 +181,7 @@ import { ParentsApi } from "src/api/ParentsApi";
 import { ConductApi } from "src/api/ConductApi";
 import { TeacherApi } from "src/api/TeacherApi";
 import { studentKey, fetchTeacher } from "src/boot/utils/config";
+import { useMeta } from "quasar";
 
 const route = useRoute();
 const birthYear = ref();
@@ -195,6 +196,7 @@ const { getOne } = StudentApi();
 const { getParentsStudentInfo } = ParentsApi();
 const { getConductAverage } = ConductApi();
 const { getOneTeacher } = TeacherApi();
+useMeta({ title: "หน้าแรก" });
 
 const id = localStorage.getItem(studentKey);
 const teacherId = localStorage.getItem(fetchTeacher);
